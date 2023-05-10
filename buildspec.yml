@@ -9,7 +9,7 @@ phases:
     commands:
       - echo "Construyendo proyecto..."
       - sam build
-  deploy:
+  post_build:
     commands:
       - echo "Desplegando aplicación..."
       - sam deploy --template-file packaged.yaml --stack-name <nombre_de_la_pila> --capabilities CAPABILITY_IAM
