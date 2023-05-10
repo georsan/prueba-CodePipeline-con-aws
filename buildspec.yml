@@ -11,9 +11,10 @@ phases:
       - sam build
   deploy:
     commands:
-      - echo "Desplegando aplicación en AWS..."
-      - sam deploy --stack-name my-stack --region us-east-1 --capabilities CAPABILITY_IAM
+      - echo "Desplegando aplicación..."
+      - sam deploy --template-file packaged.yaml --stack-name <nombre_de_la_pila> --capabilities CAPABILITY_IAM
 artifacts:
   files:
     - template.yaml
     - packaged.yaml
+
