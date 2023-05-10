@@ -3,6 +3,8 @@ version: 0.2
 phases:
   install:
     commands:
+     runtime-versions:
+        python: 3.9
       - echo "Instalando dependencias..."
   build:
     commands:
@@ -11,7 +13,7 @@ phases:
   post_build:
     commands:
       - echo "Desplegando aplicación..."
-      - sam deploy --template-file packaged.yaml --stack-name <nombre_de_la_pila> --capabilities CAPABILITY_IAM
+      - sam deploy --template-file packaged.yaml --stack-name prueba --capabilities CAPABILITY_IAM
 artifacts:
   files:
     - template.yaml
