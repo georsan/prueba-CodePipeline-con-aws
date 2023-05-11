@@ -1,3 +1,0 @@
-httpx
-requests_aws4auth
-boto3
