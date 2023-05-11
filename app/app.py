@@ -16,11 +16,8 @@ def getDataEva(event, context):
                 })
     except:
         pass
-    print(data)
-
-
     return {
         'statusCode': 200,
-        'body': json.dumps('¡Hola mundo desde Lambda!')
+        'body': json.dumps(data)
     }
 
