@@ -1,0 +1,18 @@
+version = 0.1
+[default.pipeline_bootstrap.parameters]
+pipeline_user = "arn:aws:iam::913045965320:user/aws-sam-cli-managed-prueba-pipeline-r-PipelineUser-2NWDBVY5R7JQ"
+permissions_provider = "AWS IAM"
+
+[prueba.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueba-p-PipelineExecutionRole-1738C1F53W02N"
+cloudformation_execution_role = "arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueb-CloudFormationExecutionR-KSK83J7L4I2H"
+artifacts_bucket = "getdatathingerpipeline"
+image_repository = ""
+region = "us-east-1"
+
+[dev.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::913045965320:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-1P7K00D0D110Y"
+cloudformation_execution_role = "arn:aws:iam::913045965320:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-XYM8CDSSEHOJ"
+artifacts_bucket = "getdatathingerpipeline"
+image_repository = ""
+region = "us-east-1"
