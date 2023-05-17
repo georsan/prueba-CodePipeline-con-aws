@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  getData_Thinger
+
+  Sample SAM Template for getData_Thinger
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 600
+    MemorySize: 520
+Resources:
+  MyQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: environmental_device_data
+
+  DataFromThiger:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: app/
+      Handler: app.getDataEva
+      Runtime: python3.9
+      Architectures:
+      - x86_64
+      Events:
+        Schedule:
+          Type: Schedule
+          Properties:
+            Schedule: rate(5 minutes)
+      Policies:
+        - SQSPolicy:
+            QueueName: !Ref MyQueue
+  
+  SQSPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - sqs:SendMessage
+              - sqs:ReceiveMessage
+              - sqs:DeleteMessage
+              - sqs:GetQueueUrl
+            Resource: !GetAtt MyQueue.Arn
+
