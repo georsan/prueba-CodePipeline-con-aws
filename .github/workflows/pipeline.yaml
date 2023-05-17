@@ -8,7 +8,7 @@ on:
 
 env:
   SAM_TEMPLATES: |
-    microservice1: microservice1/template.yaml
+    microservice2: microservice2/template.yaml
   TESTING_ARTIFACTS_BUCKET: testing-artifacts-bucket
   PROD_ARTIFACTS_BUCKET: prod-artifacts-bucket
   TESTING_REGION: us-east-1
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        microservice: ['microservice1', 'microservice2']
+        microservice: ['microservice2']
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        microservice: ['microservice1']
+        microservice: ['microservice2']
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
