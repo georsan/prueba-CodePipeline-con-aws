@@ -8,6 +8,7 @@ on:
 
 env:
   SAM_TEMPLATES: |
+    microservice1: microservice1/template.yaml
     microservice2: microservice2/template.yaml
   TESTING_ARTIFACTS_BUCKET: testing-artifacts-bucket
   PROD_ARTIFACTS_BUCKET: prod-artifacts-bucket
@@ -16,24 +17,38 @@ env:
 
 jobs:
   deploy-testing:
-    if: startsWith(github.ref, 'refs/heads/feature/')
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        microservice: ['microservice2']
+        microservice: ['microservice1', 'microservice2']
     steps:
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install SAM CLI
+        run: |
+          pip install aws-sam-cli
+
+      - name: Build microservice
+        run: |
+          cd microservice-folder
+          sam build --template template.yaml
+
       - name: Deploy to testing environment
         run: |
-          sam build --template ${{ env.SAM_TEMPLATES[ matrix.microservice ] }}
+          cd microservice-folder
           sam deploy --stack-name ${{ matrix.microservice }}-testing \
-            --template ${{ env.SAM_TEMPLATES[ matrix.microservice ] }} \
+            --template template.yaml \
             --capabilities CAPABILITY_IAM \
             --region ${{ env.TESTING_REGION }} \
             --s3-bucket ${{ env.TESTING_ARTIFACTS_BUCKET }} \
             --no-fail-on-empty-changeset
+
 
   deploy-prod:
     if: github.ref == 'refs/heads/main'
