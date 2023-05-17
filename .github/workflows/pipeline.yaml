@@ -47,7 +47,7 @@ jobs:
 
       - name: Deploy to production environment
         run: |
-          sam build --template ${{ env.SAM_TEMPLATES[ matrix.microservice ] }}
+          sam build --template microservice2/template.yaml
           sam deploy --stack-name ${{ matrix.microservice }}-prod \
             --template ${{ env.SAM_TEMPLATES[ matrix.microservice ] }} \
             --capabilities CAPABILITY_IAM \
