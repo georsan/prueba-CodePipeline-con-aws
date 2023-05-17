@@ -7,9 +7,9 @@ on:
       - 'feature*'
 
 env:
-  SAM_TEMPLATES:
-    - microservice1/template.yaml
-    - microservice2/template.yaml
+  SAM_TEMPLATES: |
+    microservice1: microservice1/template.yaml
+    microservice2: microservice2/template.yaml
   TESTING_ARTIFACTS_BUCKET: testing-artifacts-bucket
   PROD_ARTIFACTS_BUCKET: prod-artifacts-bucket
   TESTING_REGION: us-east-1
