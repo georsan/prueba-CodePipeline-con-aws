@@ -13,7 +13,7 @@ env:
   PIPELINE_USER_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   PIPELINE_USER_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   SAM_TEMPLATE: microservice1/template.yaml
-  TESTING_STACK_NAME: prueba
+  TESTING_STACK_NAME: Microservicio-dev
   TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueba-p-PipelineExecutionRole-1738C1F53W02N
   TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueb-CloudFormationExecutionR-KSK83J7L4I2H
   TESTING_ARTIFACTS_BUCKET: getdatathingerpipeline
@@ -22,7 +22,7 @@ env:
   # testing "sam package" and "sam deploy" commands.
   # TESTING_IMAGE_REPOSITORY = '0123456789.dkr.ecr.region.amazonaws.com/repository-name'
   TESTING_REGION: us-east-1
-  PROD_STACK_NAME: prueva-dev
+  PROD_STACK_NAME: Microservicio2-prod
   PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-1P7K00D0D110Y
   PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-XYM8CDSSEHOJ
   PROD_ARTIFACTS_BUCKET: getdatathingerpipeline
