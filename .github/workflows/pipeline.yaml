@@ -12,20 +12,20 @@ on:
 env:
   PIPELINE_USER_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   PIPELINE_USER_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  SAM_TEMPLATE: microservice1/template.yaml
+  SAM_TEMPLATE: template.yaml
   TESTING_STACK_NAME: prueba
-  TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueba-p-PipelineExecutionRole-1738C1F53W02N
-  TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueb-CloudFormationExecutionR-KSK83J7L4I2H
-  TESTING_ARTIFACTS_BUCKET: getdatathingerpipeline
+  TESTING_PIPELINE_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueba-p-PipelineExecutionRole-1N8AXDF9WOPSK
+  TESTING_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueb-CloudFormationExecutionR-1QERYM6SQOJZ0
+  TESTING_ARTIFACTS_BUCKET: pruebabucket12
   # If there are functions with "Image" PackageType in your template,
   # uncomment the line below and add "--image-repository ${TESTING_IMAGE_REPOSITORY}" to
   # testing "sam package" and "sam deploy" commands.
   # TESTING_IMAGE_REPOSITORY = '0123456789.dkr.ecr.region.amazonaws.com/repository-name'
   TESTING_REGION: us-east-1
-  PROD_STACK_NAME: prueva-dev
-  PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-dev-pipe-PipelineExecutionRole-1P7K00D0D110Y
-  PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-dev-p-CloudFormationExecutionR-XYM8CDSSEHOJ
-  PROD_ARTIFACTS_BUCKET: getdatathingerpipeline
+  PROD_STACK_NAME: prueba-test
+  PROD_PIPELINE_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueba-p-PipelineExecutionRole-1N8AXDF9WOPSK
+  PROD_CLOUDFORMATION_EXECUTION_ROLE: arn:aws:iam::913045965320:role/aws-sam-cli-managed-prueb-CloudFormationExecutionR-1QERYM6SQOJZ0
+  PROD_ARTIFACTS_BUCKET: pruebabucket12
   # If there are functions with "Image" PackageType in your template,
   # uncomment the line below and add "--image-repository ${PROD_IMAGE_REPOSITORY}" to
   # prod "sam package" and "sam deploy" commands.
